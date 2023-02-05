@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Unlock&family=Archivo+Narrow&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.mjs" type="module"></script>
+
+    <title>Page 404</title>
+  </head>
+  <body>
+    <header class="main_header">
+      <h1 class="h1">Erreur 404</h1>
+      <h2 class="h2">La route que vous avez emprunté ne mène nulle part</h2>
+    </header>
+
+    <main class="main_container">
+      <section class="section section-search">
+        <form id="form-search">
+          <label class="input-label" for="input-query"
+            >Dig Your Way Out :</label
+          >
+          <div class="input__wrapper">
+            <input
+              type="text"
+              name="query"
+              id="input-query"
+              class="input-field"
+            />
+            <button type="submit" class="btn link-disabled">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section section-suggestions">
+        <p>
+          Pour éviter de vous perdre à nouveau, voici notre suggestion de jeux
+          pour vous aider :
+        </p>
+        <div class="suggestions__wrapper"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a
+        href="https://discord.com/channels/655077317911117860/1041772919266750616/1068913208317984848"
+        title="Me guider vers le discord"
+        target="_blank"
+      >
+        Codé par Forth - Concours #3 : Créer et coder une page 404
+      </a>
+    </footer>
+
+    <!-- Templates -->
+    <template id="suggestion-game-template">
+      <style>
+        article {
+          width: 100%;
+          height: 100%;
+          background: hsl(0, 0%, 0%, 0.3);
+          border-radius: 0.5rem;
+          padding: 1rem;
+          box-sizing: border-box;
+          font-family: var(--font-3);
+          display: flex;
+          flex-direction: column;
+        }
+        article > * + * {
+          margin-top: 0.5rem;
+        }
+        main {
+          flex: 1;
+        }
+        main slot {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        footer slot {
+          color: red;
+        }
+      </style>
+      <article>
+        <header>
+          <slot name="name">NOM DU JEU</slot>
+        </header>
+        <main>
+          <slot name="desc">DESCRIPTION DU JEU</slot>
+        </main>
+        <footer>
+          <slot name="link">Me guider vers ce jeu</slot>
+        </footer>
+      </article>
+    </template>
+  </body>
+</html>
