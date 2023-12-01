@@ -1,14 +1,15 @@
-import { suggestions } from "./data.mjs";
-import { SuggestionElement } from "./SuggestionElement.mjs";
+import "./style.css";
+import { suggestions } from "./data";
+import { SuggestionElement } from "./SuggestionElement";
 
 const form = document.getElementById("form-search");
 const suggestionsWrapper = document.querySelector(".suggestions__wrapper");
 
-form.addEventListener("submit", preventDefault);
+form?.addEventListener("submit", preventDefault);
 customElements.define("suggestion-game", SuggestionElement);
 
 suggestions.forEach((suggestion) => {
-  suggestionsWrapper.insertAdjacentHTML(
+  suggestionsWrapper?.insertAdjacentHTML(
     "beforeend",
     `
         <suggestion-game>
@@ -27,6 +28,6 @@ anchors.forEach((anchor) => {
   anchor.addEventListener("click", preventDefault);
 });
 
-function preventDefault(e) {
+function preventDefault(e: Event) {
   e.preventDefault();
 }
